@@ -1,0 +1,44 @@
+1.Mingw64: compiler c/cpp for 64 bit windows: download link: https://release-assets.githubusercontent.com/github-production-release-asset/220996547/69279c65-efb8-471d-87d0-d3f50ffeb73d?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-11-25T13%3A07%3A39Z&rscd=attachment%3B+filename%3Dwinlibs-x86_64-posix-seh-gcc-15.2.0-mingw-w64msvcrt-13.0.0-r1.zip&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-11-25T12%3A06%3A53Z&ske=2025-11-25T13%3A07%3A39Z&sks=b&skv=2018-11-09&sig=1sRh%2FB6b2BM5piD0y%2BRBC%2BiMPN4OCBhs7eYfshmUQTU%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2NDA3NzAzNSwibmJmIjoxNzY0MDczNDM1LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.DdylOQSeG9K75FbjzklEL2TKm8v2xcPfkF3kPAAkcSY&response-content-disposition=attachment%3B%20filename%3Dwinlibs-x86_64-posix-seh-gcc-15.2.0-mingw-w64msvcrt-13.0.0-r1.zip&response-content-type=application%2Foctet-stream
+    extract and save in c:\  therefor path c:\mingw64
+    then add path of bin file inside mingw64 to system environment variables
+
+2.Curl: libcurl is important to connect to url and therefor the api.
+    download link: https://curl.se/windows/dl-8.17.0_4/curl-8.17.0_4-win64-mingw.zip
+    extract and therefore final path c:\curl
+
+3.Json: Important to send and recieve text i.e. commands and responses bw gemini and the cpp program.
+    download link:https://release-assets.githubusercontent.com/github-production-release-asset/11171548/0b7d2eeb-83db-4026-aea7-52982f7dda14?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-11-28T09%3A10%3A36Z&rscd=attachment%3B+filename%3Djson.hpp&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-11-28T08%3A10%3A26Z&ske=2025-11-28T09%3A10%3A36Z&sks=b&skv=2018-11-09&sig=unqT1gygTvSh47K9X4rnIDM%2BBi3gkobnOQfOaJh8boA%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2NDMxODc3MiwibmJmIjoxNzY0MzE4NDcyLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.1ns8DtZX5SOjZvyca-ucYA97542iQzp4lDpT-A6WtGE&response-content-disposition=attachment%3B%20filename%3Djson.hpp&response-content-type=application%2Foctet-stream
+    save file json.hpp to c:\json\json.hpp
+    and also in the folder where you have kept the main project file( i.e. chatbot.cpp)
+
+4.CA certificate: Required to access urls online.
+    download link: https://curl.se/ca/cacert.pem
+    save file cacer.pem as follows: c:\curl\cacert.pem (that is c:\curl\)
+
+5.FINALLY:
+  A. The following must exist:
+    c:\mingw64
+    c:\curl
+    c:\json\json.hpp
+    c:\curl\cacert.pem
+
+  B.In the folder of your project:
+    1.chatbot.cpp (i.e. main.cpp)
+    2.libcurl-x64.dll (download from repo)
+    3.json.hpp (copy from c:\json\json.hpp)
+
+  C.In the ui configurations of vscode ( command pannel->uiconfig)
+    THe include path must have:
+        "${workspaceFolder}/**",
+        "C:/curl/include",
+        "C:/json"
+    
+  D. Compile and run:
+     1. save chatBot.cpp 
+     2. for compiling type the following command in terminal: g++ chatBot.cpp -I"C:/curl/include" -L"C:/curl/lib" -lcurl -I"C:/json" -o chat.exe
+     3. then run the final exe file.. named: chat.exe
+                cmd: ./chat.exe
+                        or
+                     chat.exe
+
+Thats it!!!
