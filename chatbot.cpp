@@ -3,14 +3,14 @@
 #include <string>
 #include <vector>
 #include <curl/curl.h>
-#include "C:/json/json.hpp"   // change if you saved json.hpp elsewhere
+#include "C:/json/json.hpp"  
 
 using json = nlohmann::json;
 using namespace std;
 
 // CONFIG
-static const string API_KEY   = "YOUR_API_KEY_HERE";
-static const string CA_BUNDLE = "C:/curl/cacert.pem";   // your cacert.pem
+static const string API_KEY   = "YOUR_API_KEY_HERE"; //paste api key of gemini ai that you have.
+static const string CA_BUNDLE = "C:/curl/cacert.pem";  //path of ca certificate
 
 // curl write callback
 static size_t WriteCallback(void* contents, size_t size, size_t nmemb, string* s) {
